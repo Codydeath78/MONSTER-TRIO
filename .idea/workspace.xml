@@ -4,22 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09cc200e-521d-4ffa-ad35-0e8f43d5512f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/my_anime_catalog/DATA_BASE_UTLITY.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/my_anime_catalog/Logged-In.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/my_anime_catalog/LoggedIn_controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/my_anime_catalog/Signup_controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/my_anime_catalog/sign-up.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/my_anime_catalog/account_creation.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="09cc200e-521d-4ffa-ad35-0e8f43d5512f" name="Changes" comment="3/14/2024">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/my_anime_catalog/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/my_anime_catalog/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/my_anime_catalog/Main_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/my_anime_catalog/Main_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/my_anime_catalog/Scene_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/my_anime_catalog/Scene_controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/my_anime_catalog/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/my_anime_catalog/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/my_anime_catalog/scene 1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/my_anime_catalog/scene 1.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/my_anime_catalog/scene 2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/my_anime_catalog/scene 2.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +63,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/linar051/IdeaProjects/MY_ANIME_CATALOG/src/main/java/com/example/my_anime_catalog&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/linar051/IdeaProjects/MY_ANIME_CATALOG/lib/mysql-connector-j-8.2.0.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/linar051/Downloads/MONSTER-TRIO-master&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -116,11 +102,28 @@
       <workItem from="1710291578785" duration="11910000" />
       <workItem from="1710380254733" duration="164000" />
       <workItem from="1710431933988" duration="2829000" />
-      <workItem from="1710461848216" duration="9819000" />
+      <workItem from="1710461848216" duration="10178000" />
+      <workItem from="1710527681752" duration="1515000" />
+      <workItem from="1710530020297" duration="609000" />
+      <workItem from="1710531122389" duration="1189000" />
+      <workItem from="1711145556639" duration="571000" />
     </task>
+    <task id="LOCAL-00001" summary="3/14/2024">
+      <option name="closed" value="true" />
+      <created>1710474678887</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1710474678887</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="3/14/2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="3/14/2024" />
   </component>
 </project>
