@@ -16,7 +16,7 @@
             <children>
                 <ImageView fitHeight="239.0" fitWidth="243.0" layoutX="-4.0" layoutY="161.0" pickOnBounds="true">
                     <image>
-                        <Image url="@chopcrycover.jpg" />
+                        <Image url="@../images/chopcrycover.jpg" />
                     </image>
                 </ImageView>
                 <Label layoutX="27.0" layoutY="31.0" text="AniTracker">
@@ -35,7 +35,7 @@
             <children>
                 <ImageView cache="true" fitHeight="150.0" fitWidth="200.0" layoutX="79.0" layoutY="42.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@transparantSH.png" />
+                        <Image url="@../images/transparantSH.png" />
                     </image>
                 </ImageView>
                 <Label layoutX="13.0" layoutY="184.0" text="Username">
