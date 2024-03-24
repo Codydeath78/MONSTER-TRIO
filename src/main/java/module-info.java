@@ -1,12 +1,11 @@
 module monstertrio.myanime {
     requires javafx.controls;
     requires javafx.fxml;
+    requires org.slf4j;
+    requires java.sql;
 
-    requires org.controlsfx.controls;
-    requires com.dlsc.formsfx;
-    requires org.kordamp.ikonli.javafx;
-    requires org.kordamp.bootstrapfx.core;
-
-    opens monstertrio.myanime to javafx.fxml;
-    exports monstertrio.myanime;
+    exports monstertrio.myanime.app;
+    exports monstertrio.myanime.app.controllers;
+    exports monstertrio.myanime.app.models;
+    exports monstertrio.myanime.app.helpers;
 }
