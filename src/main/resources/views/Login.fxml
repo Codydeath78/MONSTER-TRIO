@@ -13,7 +13,7 @@
     <children>
         <AnchorPane prefHeight="400.0" prefWidth="250.0" style="-fx-background-color: CB595D;">
             <children>
-                <ImageView fitHeight="239.0" fitWidth="243.0" layoutX="-4.0" layoutY="161.0" pickOnBounds="true">
+                <ImageView fx:id="myLoginImageView" fitHeight="239.0" fitWidth="243.0" layoutX="-4.0" layoutY="161.0" onMouseMoved="#displayLoginImage" pickOnBounds="true">
                     <image>
                         <Image url="@../images/chopcrycover.jpg" />
                     </image>
@@ -32,7 +32,7 @@
         </AnchorPane>
         <AnchorPane prefHeight="400.0" prefWidth="410.0">
             <children>
-                <ImageView cache="true" fitHeight="150.0" fitWidth="200.0" layoutX="79.0" layoutY="42.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                <ImageView cache="true" fitHeight="150.0" fitWidth="200.0" layoutX="79.0" layoutY="42.0" nodeOrientation="INHERIT" onMouseMoved="#displayLoginImage" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../images/transparantSH.png" />
                     </image>

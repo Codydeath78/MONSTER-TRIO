@@ -34,9 +34,9 @@
         </Button>
         <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: CB595D;">
             <children>
-                <ImageView fx:id="myImageView_3" fitHeight="415.0" fitWidth="398.0" layoutX="-130.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="myImageView_3" fitHeight="400.0" fitWidth="398.0" layoutX="-130.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../third.jpg" />
+                        <Image url="@../../../../../../first.jpg" />
                     </image>
                 </ImageView>
             </children>
