@@ -15,7 +15,6 @@ import java.io.IOException;
 public class AnimeAddController {
 
 
-    private Stage stage;
     private Scene scene;
     private Parent root;
 
@@ -24,8 +23,8 @@ public class AnimeAddController {
     Image myAnimeAddImage;
     public void switchToAnimeAdd(ActionEvent event) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("AnimeAdd.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/AnimeAdd.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 700, 400);
         stage.setScene(scene);
         stage.show();
@@ -38,7 +37,7 @@ public class AnimeAddController {
 
 
     public AnimeAddController() {
-        myAnimeAddImage = new Image(getClass().getResourceAsStream("first.jpg"));
+        myAnimeAddImage = new Image(getClass().getResourceAsStream("/images/first.jpg"));
 
     }
 

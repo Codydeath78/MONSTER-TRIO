@@ -8,4 +8,5 @@ module monstertrio.myanime {
     exports monstertrio.myanime.app.controllers;
     exports monstertrio.myanime.app.models;
     exports monstertrio.myanime.app.helpers;
+    opens monstertrio.myanime.app.controllers to javafx.fxml;
 }

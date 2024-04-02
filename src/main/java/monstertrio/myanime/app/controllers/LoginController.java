@@ -14,7 +14,6 @@ import java.io.IOException;
 
 public class LoginController {
 
-    private Stage stage;
     private Scene scene;
     private Parent root;
 
@@ -23,7 +22,7 @@ public class LoginController {
     Image myLoginImage;
 
     public LoginController() {
-            myLoginImage = new Image(getClass().getResourceAsStream("chopcrycover.jpg"));
+            myLoginImage = new Image(getClass().getResourceAsStream("/images/chopcrycover.jpg"));
 
     }
     public void displayLoginImage(){
@@ -32,8 +31,8 @@ public class LoginController {
 
     public void switchToLogin(ActionEvent event) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Login.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/Login.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 700, 400);
         stage.setScene(scene);
         stage.show();

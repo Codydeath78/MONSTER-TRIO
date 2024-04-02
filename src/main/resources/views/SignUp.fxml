@@ -9,37 +9,31 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monstertrio.myanime.app.controllers.SignupController">
-    <children>
-        <Label layoutX="292.0" layoutY="40.0" text="Account Creation">
-            <font>
-                <Font name="Calibri Bold" size="40.0" />
-            </font>
-        </Label>
-        <Label layoutX="300.0" layoutY="110.0" text="New Username ">
-            <font>
-                <Font name="Calibri Bold" size="18.0" />
-            </font>
-        </Label>
-        <Label layoutX="300.0" layoutY="151.0" text="New Password">
-            <font>
-                <Font name="Calibri Bold" size="18.0" />
-            </font>
-        </Label>
-        <TextField layoutX="420.0" layoutY="109.0" />
-        <TextField layoutX="420.0" layoutY="150.0" />
-        <Button layoutX="368.0" layoutY="200.0" mnemonicParsing="false" style="-fx-background-color: CB595D; -fx-background-radius: 5;" text="LET'S SAIL!">
-            <font>
-                <Font name="Calibri Bold" size="18.0" />
-            </font>
-        </Button>
-        <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: CB595D;">
-            <children>
-                <ImageView fx:id="myImageView_3" fitHeight="400.0" fitWidth="398.0" layoutX="-130.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../../../../../first.jpg" />
-                    </image>
-                </ImageView>
-            </children>
-        </AnchorPane>
-    </children>
+    <Label layoutX="292.0" layoutY="40.0" text="Account Creation">
+        <font>
+            <Font name="Calibri Bold" size="40.0" />
+        </font>
+    </Label>
+    <Label layoutX="300.0" layoutY="110.0" text="New Username ">
+        <font>
+            <Font name="Calibri Bold" size="18.0" />
+        </font>
+    </Label>
+    <Label layoutX="300.0" layoutY="151.0" text="New Password">
+        <font>
+            <Font name="Calibri Bold" size="18.0" />
+        </font>
+    </Label>
+    <TextField layoutX="420.0" layoutY="109.0" />
+    <TextField layoutX="420.0" layoutY="150.0" />
+    <Button layoutX="368.0" layoutY="200.0" mnemonicParsing="false" style="-fx-background-color: CB595D; -fx-background-radius: 5;" text="LET'S SAIL!">
+        <font>
+            <Font name="Calibri Bold" size="18.0" />
+        </font>
+    </Button>
+    <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: CB595D;">
+        <ImageView fx:id="myImageView_3" fitHeight="400.0" fitWidth="398.0" layoutX="-130.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/first.jpg" />
+        </ImageView>
+    </AnchorPane>
 </AnchorPane>

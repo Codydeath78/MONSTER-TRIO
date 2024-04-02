@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class SignupController {
 
-    private Stage stage;
+    public ImageView myImageView_3;
     private Scene scene;
     private Parent root;
 
@@ -23,8 +23,8 @@ public class SignupController {
     Image mySignUpImage;
     public void switchToSignUp(ActionEvent event) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("SignUp.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/SignUp.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 700, 400);
         stage.setScene(scene);
         stage.show();
@@ -36,7 +36,7 @@ public class SignupController {
 
 
     public SignupController() {
-        mySignUpImage = new Image(getClass().getResourceAsStream("first.jpg"));
+        mySignUpImage = new Image(getClass().getResourceAsStream("/images/first.jpg"));
 
     }
 
