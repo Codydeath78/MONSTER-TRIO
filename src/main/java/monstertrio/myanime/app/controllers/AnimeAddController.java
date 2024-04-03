@@ -12,32 +12,35 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SignupController {
+public class AnimeAddController {
 
-    public ImageView myImageView_3;
+
     private Scene scene;
     private Parent root;
 
     @FXML
-    ImageView mySignUpImageView;
-    Image mySignUpImage;
-    public void switchToSignUp(ActionEvent event) throws IOException
+    ImageView myAnimeAddImageView;
+    Image myAnimeAddImage;
+    public void switchToAnimeAdd(ActionEvent event) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/SignUp.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/AnimeAdd.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 700, 400);
         stage.setScene(scene);
         stage.show();
 
     }
-    public void displaySignUpImage(){
-        mySignUpImageView.setImage(mySignUpImage);
+
+    public void displayAnimeAddImage(){
+        myAnimeAddImageView.setImage(myAnimeAddImage);
     }
 
 
-    public SignupController() {
-        mySignUpImage = new Image(getClass().getResourceAsStream("/images/first.jpg"));
+    public AnimeAddController() {
+        myAnimeAddImage = new Image(getClass().getResourceAsStream("/images/first.jpg"));
 
     }
+
+
 
 }

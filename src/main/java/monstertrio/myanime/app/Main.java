@@ -16,13 +16,13 @@ public class Main extends Application {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
     @Override
     public void start(Stage stage) throws IOException {
-        try{
-            Parent root = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));
-            Scene scene = new Scene(root);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/Login.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
             stage.setTitle("AniTracker");
             stage.setScene(scene);
             stage.show();
-        }catch (Exception e){
+        } catch (Exception e){
             logger.error("",e);
         }
     }
