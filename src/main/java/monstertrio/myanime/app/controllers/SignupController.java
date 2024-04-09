@@ -40,4 +40,11 @@ public class SignupController {
 
     }
 
+    public void goToAnimeList(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/AnimeList.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 700, 400);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

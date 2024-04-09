@@ -1,5 +1,6 @@
 package monstertrio.myanime.app.controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,8 +32,6 @@ public class AnimeListController {
 
     }
 
-
-
     public void displayAnimeListImage(){
         myAnimeListImageView.setImage(myAnimeListImage);
     }
@@ -43,5 +42,20 @@ public class AnimeListController {
 
     }
 
+
+    public void goToAnimeAdd(ActionEvent event) throws IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/AnimeAdd.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 700, 400);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+    public void EXIT(ActionEvent event) throws IOException
+    {
+        Platform.exit();
+
+    }
 
 }

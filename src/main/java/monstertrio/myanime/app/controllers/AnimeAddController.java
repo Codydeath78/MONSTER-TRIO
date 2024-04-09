@@ -40,6 +40,15 @@ public class AnimeAddController {
         myAnimeAddImage = new Image(getClass().getResourceAsStream("/images/first.jpg"));
 
     }
+    public void goToAnimeList(ActionEvent event) throws IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/AnimeList.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 700, 400);
+        stage.setScene(scene);
+        stage.show();
+
+    }
 
 
 
