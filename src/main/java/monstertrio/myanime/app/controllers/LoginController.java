@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.EventObject;
 
 public class LoginController {
 
@@ -40,5 +41,14 @@ public class LoginController {
 
     }
 
+    public void switchToAnimeList(ActionEvent event) throws IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/AnimeList.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 700, 400);
+        stage.setScene(scene);
+        stage.show();
+
+    }
 
 }
