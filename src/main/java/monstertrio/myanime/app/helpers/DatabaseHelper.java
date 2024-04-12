@@ -1,51 +1,178 @@
 package monstertrio.myanime.app.helpers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import monstertrio.myanime.app.controllers.AnimeAddController;
+import monstertrio.myanime.app.controllers.AnimeListController;
 import monstertrio.myanime.app.models.Anime;
-import monstertrio.myanime.app.models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DatabaseHelper {
     private static final Logger logger = LoggerFactory.getLogger(DatabaseHelper.class);
     private static final String URL = "jdbc:sqlite:myanime.sqlite";
-    private Connection conn=null;
 
     // Constructor to establish the connection
-    public DatabaseHelper() {
-        try {
-            conn = DriverManager.getConnection(URL);
-        } catch (SQLException e) {
-            logger.error("Error occurred while accessing Database", e);
-        }
+    private static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL);
     }
 
+    public static void changeScene(ActionEvent event, String fxmlFile, String title, int userId, String username, int page){
+        Parent root=null;
+        /*
+        * Page1: Login
+        * Page2: Signup
+        * Page3: AnimeList
+        * Page4: AnimeAdd
+        * */
+        if(page==3 || page==4){//if we are going to anime add
+            try{
+                FXMLLoader loader=new FXMLLoader(DatabaseHelper.class.getResource(fxmlFile));
+                root=loader.load();
+                if(page==3){
+                    AnimeListController animeListController=loader.getController();
+                    animeListController.setUserInformation(userId);
+                }else{
+                    AnimeAddController animeAddController=loader.getController();
+                    animeAddController.setUserInformation(userId);
+                }
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }else{
+            try{
+                root=FXMLLoader.load(DatabaseHelper.class.getResource(fxmlFile));
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle(title);
+        stage.setScene(new Scene(root,600,400));
+        stage.show();
+    }
+
+
+    public int loginUser(String username, String password) throws SQLException{
+        String query="SELECT * FROM users WHERE username= ? AND password=?";
+        String hashedPassword=hashPassword(password);
+        try(Connection conn=getConnection();PreparedStatement pstmt=conn.prepareStatement(query);){
+            pstmt.setString(1,username);
+            pstmt.setString(2,password);
+            ResultSet resultSet=pstmt.executeQuery();
+            closeConnection(conn);
+            if (resultSet.next())
+                return resultSet.getInt("id");
+        }catch (SQLException e){
+            System.out.println("Error adding user: " + e.getMessage());
+            throw e;
+            
+        }
+            return 0;
+    }
     //add User
-    public void addUser(User user) throws SQLException{
-        //check if user already exists
-        PreparedStatement psCheckAvail=conn.prepareStatement("SELECT * FROM users WHERE username=?");
-        psCheckAvail.setString(1,user.getUsername());
-        ResultSet resultSet = psCheckAvail.executeQuery();
-        if(resultSet.isBeforeFirst()){
-            System.out.println("User already exists!");
-            //javafx alert
-        } else{
-        String query="INSERT INTO users(name, username, password) VALUES(?,?,?)";
-        PreparedStatement psInsert = conn.prepareStatement(query);
-        psInsert.setString(1, user.getName());
-        psInsert.setString(2,user.getUsername());
-        psInsert.setString(3, user.getPassword());
-        psInsert.executeUpdate();
+    public boolean signUpUser(String name, String username, String password) throws SQLException {
+        String query1="SELECT * FROM users WHERE username=?";
+        String query2 = "INSERT INTO users(name, username, password) VALUES(?,?,?)";
+        try(Connection conn=getConnection();
+            PreparedStatement psCheckAvail = conn.prepareStatement(query1);
+            PreparedStatement psInsert = conn.prepareStatement(query2);) {
+            // Check if user already exists
+            psCheckAvail.setString(1, username);
+            ResultSet resultSet = psCheckAvail.executeQuery();
+            if (resultSet.isBeforeFirst()) {
+                System.out.println("User already exists!");
+                return false;
+                // Display alert (JavaFX alert) or handle the message as required
+            } else {
+                String hashedPassword = hashPassword(password);
+                psInsert.setString(1, name);
+                psInsert.setString(2, username);
+                psInsert.setString(3, hashedPassword);
+                psInsert.executeUpdate();
+                closeConnection(conn);
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error adding user: " + e.getMessage());
+            // Handle the exception here (e.g., log the error, display a message to the user, etc.)
+            throw e; // Re-throw the exception to propagate it to the calling code
         }
     }
-    //addAnime
-    public void addAnime(Anime anime){
 
+
+    public ObservableList<Anime> getAnimeListForUser(int userId){
+        ObservableList<Anime> animeList = FXCollections.observableArrayList();
+        String query = "SELECT * FROM anime WHERE user_id = ?";
+        try(Connection conn=getConnection();PreparedStatement pstmt= conn.prepareStatement(query);){
+            pstmt.setInt(1,userId);
+            ResultSet resultSet = pstmt.executeQuery();
+            while(resultSet.next()){
+                Anime anime = new Anime();
+                anime.setId(resultSet.getInt("id"));
+                anime.setTitle(resultSet.getString("title"));
+                anime.setDesc(resultSet.getString("desc"));
+                anime.setRating(resultSet.getInt("rating"));
+                anime.setStatus(resultSet.getString("status"));
+                anime.setGenre(resultSet.getString("genre"));
+                anime.setImageUrl(resultSet.getString("image_url"));
+                animeList.add(anime);
+            }
+            closeConnection(conn);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return animeList;
     }
-    //updateAnime
-    //deleteAnime
-    public void closeConnection() {
+
+
+    //addAnime
+    public void addAnime(Anime anime) {
+        String query = "INSERT INTO anime (title, desc, rating, status, genre, user_id, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try(Connection conn=getConnection(); PreparedStatement pstmt=conn.prepareStatement(query);){
+            pstmt.setString(1, anime.getTitle());
+            pstmt.setString(2, anime.getDesc());
+            pstmt.setInt(3, anime.getRating());
+            pstmt.setString(4, anime.getStatus());
+            pstmt.setString(5, anime.getGenre());
+            pstmt.setInt(6, anime.getUserId());
+            pstmt.setString(7, anime.getImageUrl());
+
+            pstmt.executeUpdate();
+
+            System.out.println("Anime Successfully Added");
+            closeConnection(conn);
+        }catch (SQLException e){
+            System.out.println("Error adding anime: " + e.getMessage());
+        }
+    }
+
+
+    public void deleteAnime(int animeID){
+        String query="DELETE FROM anime WHERE id = ?";
+        try(Connection conn=getConnection();PreparedStatement pstmt=conn.prepareStatement(query);){
+            pstmt.setString(1,String.valueOf(animeID));
+            pstmt.executeUpdate();
+            closeConnection(conn);
+        }catch(SQLException e){
+            System.out.println("Error in Deleting");
+        }
+    }
+
+
+    private void closeConnection(Connection conn) {
         try {
             if (conn != null) {
                 conn.close();
@@ -54,7 +181,23 @@ public class DatabaseHelper {
             logger.error("Error occurred while accessing Database", e);
         }
     }
-    //addAnime
-    //deleteAnime
-    //updateAnime
+
+
+    private static String hashPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes());
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            // Handle hashing algorithm not found
+            logger.error("Error occurred while hashing password", e);
+            return null;
+        }
+    }
 }

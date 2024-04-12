@@ -14,20 +14,33 @@ import java.io.IOException;
 
 public class Main extends Application {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
+
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage primaryStage) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/Login.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            stage.setTitle("AniTracker");
-            stage.setScene(scene);
-            stage.show();
+
+            // Load scenes from FXML files
+            Parent loginRoot = FXMLLoader.load(getClass().getResource("login.fxml"));
+            Scene loginScene = new Scene(loginRoot);
+
+            Parent signupRoot = FXMLLoader.load(getClass().getResource("signup.fxml"));
+            Scene signUpScene = new Scene(signupRoot);
+
+            Parent animeListRoot = FXMLLoader.load(getClass().getResource("animeList.fxml"));
+            Scene animeListScene = new Scene(animeListRoot);
+
+            Parent animeAddRoot = FXMLLoader.load(getClass().getResource("animeAdd.fxml"));
+            Scene animeAddScene = new Scene(animeAddRoot);
+
+            // Set initial scene
+            primaryStage.setScene(loginScene);
+            primaryStage.setTitle("Anime Application - Login");
+            primaryStage.show();
         } catch (Exception e){
             logger.error("",e);
         }
     }
-
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }

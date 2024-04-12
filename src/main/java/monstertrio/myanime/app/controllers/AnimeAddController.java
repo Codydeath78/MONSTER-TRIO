@@ -13,7 +13,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class AnimeAddController {
+    public void setUserInformation(int userId) {
+    }
 
+/*
 
     private Scene scene;
     private Parent root;
@@ -21,6 +24,9 @@ public class AnimeAddController {
     @FXML
     ImageView myAnimeAddImageView;
     Image myAnimeAddImage;
+    */
+/*
+    *
     public void switchToAnimeAdd(ActionEvent event) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/AnimeAdd.fxml"));
@@ -30,6 +36,7 @@ public class AnimeAddController {
         stage.show();
 
     }
+*//*
 
     public void displayAnimeAddImage(){
         myAnimeAddImageView.setImage(myAnimeAddImage);
@@ -50,6 +57,7 @@ public class AnimeAddController {
 
     }
 
+*/
 
 
 }

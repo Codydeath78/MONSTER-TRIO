@@ -7,6 +7,7 @@ public class Anime {
     private int rating;
     private String status;
     private String genre;
+    private String imageUrl;
     private int userId;
     //private String imageUrl;
     public Anime(){
@@ -50,7 +51,7 @@ public class Anime {
         this.desc=desc;
     }
     //rating
-    public int getRating(int rating){
+    public int getRating(){
         return rating;
     }
 
@@ -73,11 +74,13 @@ public class Anime {
         this.genre = genre;
     }
 
-    public int getUserId(int userId){
+    public String getImageUrl() {return imageUrl;}
+
+    public void setImageUrl(String imageUrl){this.imageUrl=imageUrl;}
+
+    public int getUserId(){
         return userId;
     }
-    public void setUserId(int userId){
-        this.userId=userId;
-    }
+    public void setUserId(int userId){this.userId=userId;}
 
 }

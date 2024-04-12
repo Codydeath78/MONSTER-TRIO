@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monstertrio.myanime.app.controllers.LoginController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monstertrio.myanime.app.controllers.SignupController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="250.0" style="-fx-background-color: CB595D;">
          <children>
@@ -66,7 +66,7 @@
                   <Font name="Calibri Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="button_signup" alignment="CENTER" layoutX="125.0" layoutY="291.0" mnemonicParsing="false" onAction="#switchToLogin" style="-fx-background-color: CB595D;" text="LET'S SAIL!" textAlignment="CENTER">
+            <Button fx:id="button_signup" alignment="CENTER" layoutX="125.0" layoutY="291.0" mnemonicParsing="false"  style="-fx-background-color: CB595D;" text="LET'S SAIL!" textAlignment="CENTER">
                <font>
                   <Font name="Calibri Bold" size="18.0" />
                </font>
@@ -76,7 +76,7 @@
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="button_log_in" layoutX="206.0" layoutY="352.0" mnemonicParsing="false" onAction="#switchToLogin" style="-fx-background-color: CB595D;" text="Log In!" textFill="#0022ff" underline="true">
+            <Button fx:id="button_log_in" layoutX="206.0" layoutY="352.0" mnemonicParsing="false" style="-fx-background-color: CB595D;" text="Log In!" textFill="#0022ff" underline="true">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
