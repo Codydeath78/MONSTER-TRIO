@@ -66,7 +66,7 @@
                   <Font name="Calibri Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="button_signup" alignment="CENTER" layoutX="125.0" layoutY="291.0" mnemonicParsing="false"  style="-fx-background-color: CB595D;" text="LET'S SAIL!" textAlignment="CENTER">
+            <Button fx:id="button_signup" alignment="CENTER" layoutX="125.0" layoutY="291.0" mnemonicParsing="false" onAction="#initialize" style="-fx-background-color: CB595D;" text="LET'S SAIL!" textAlignment="CENTER">
                <font>
                   <Font name="Calibri Bold" size="18.0" />
                </font>
