@@ -7,21 +7,24 @@ public class User {
     private String name;
 
     //constructor
-    public User(){
-        id=0;
-        username="";
-        password="";
-        name="";
+    public User() {
+        id = 0;
+        username = "";
+        password = "";
+        name = "";
     }
+
     public User(String username, String password, String name) {
         this.username = username;
         this.password = password;
         this.name = name;
     }
+
     //getters
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -29,6 +32,7 @@ public class User {
     public String getUsername() {
         return username;
     }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -36,15 +40,19 @@ public class User {
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public boolean authenticate(String password) {
         // Method to authenticate user by comparing provided password with stored password
         // Consider using secure password hashing and comparison

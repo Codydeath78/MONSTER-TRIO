@@ -43,19 +43,21 @@ public class AnimeListController {
 
     private final DatabaseHelper helper;
     private int userId;
-    
 
-    public AnimeListController(){
+
+    public AnimeListController() {
         helper = new DatabaseHelper();
     }
-    public void setUserInformation(int userId){
-        this.userId=userId;
+
+    public void setUserInformation(int userId) {
+        this.userId = userId;
 
     }
+
     public void initialize() {
-        column_index.setCellValueFactory(new PropertyValueFactory<>("index"));
-        column_image.setCellValueFactory(new PropertyValueFactory<>("image"));
-        column_title.setCellValueFactory(new PropertyValueFactory<>("title"));
+        column_index.setCellValueFactory(new PropertyValueFactory<>("#"));
+        column_image.setCellValueFactory(new PropertyValueFactory<>("Image"));
+        column_title.setCellValueFactory(new PropertyValueFactory<>("Title"));
         column_desc.setCellValueFactory(new PropertyValueFactory<>("desc"));
         column_rating.setCellValueFactory(new PropertyValueFactory<>("rating"));
         column_genre.setCellValueFactory(new PropertyValueFactory<>("genre"));
@@ -82,7 +84,7 @@ public class AnimeListController {
         });
         ObservableList<Anime> animeList = helper.getAnimeListForUser(userId);
         animeTableView.setItems(animeList);
-}
+    }
     /*public void switchToAnimeList(ActionEvent event) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/AnimeList.fxml"));
