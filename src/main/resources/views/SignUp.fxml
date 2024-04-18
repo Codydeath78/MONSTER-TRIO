@@ -9,78 +9,77 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monstertrio.myanime.app.controllers.SignupController">
-   <children>
-      <AnchorPane prefHeight="400.0" prefWidth="250.0" style="-fx-background-color: CB595D;">
-         <children>
-            <ImageView fitHeight="202.0" fitWidth="245.0" layoutY="200.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../images/chopcrycover.jpg" />
-               </image>
-            </ImageView>
-            <Label layoutX="16.0" layoutY="34.0" text="AniTracker">
-               <font>
-                  <Font name="Franklin Gothic Demi" size="40.0" />
-               </font></Label>
-            <Label layoutX="33.0" layoutY="81.0" prefHeight="30.0" prefWidth="154.0" text="Product of MonsterTrio Inc.">
-               <font>
-                  <Font name="Calibri Italic" size="12.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="432.0" prefWidth="424.0">
-         <children>
-            <TextField fx:id="tf_name" layoutX="117.0" layoutY="161.0" prefHeight="32.0" prefWidth="208.0" promptText="Name">
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="tf_username" layoutX="117.0" layoutY="204.0" prefHeight="32.0" prefWidth="208.0" promptText="Username">
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="tf_password" layoutX="117.0" layoutY="247.0" prefHeight="32.0" prefWidth="208.0" promptText="Password">
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </TextField>
-            <ImageView fitHeight="123.0" fitWidth="190.0" layoutX="83.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/transparantSH.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="17.0" layoutY="166.0" text="Name">
-               <font>
-                  <Font name="Calibri Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="209.0" text="Username">
-               <font>
-                  <Font name="Calibri Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="17.0" layoutY="252.0" text="Password">
-               <font>
-                  <Font name="Calibri Bold" size="18.0" />
-               </font>
-            </Label>
-            <Button fx:id="button_signup" alignment="CENTER" layoutX="125.0" layoutY="291.0" mnemonicParsing="false" onAction="#initialize" style="-fx-background-color: CB595D;" text="LET'S SAIL!" textAlignment="CENTER">
-               <font>
-                  <Font name="Calibri Bold" size="18.0" />
-               </font>
-            </Button>
-            <Label layoutX="91.0" layoutY="357.0" text="Already a Member?">
-               <font>
-                  <Font name="Calibri Bold" size="14.0" />
-               </font>
-            </Label>
-            <Button fx:id="button_log_in" layoutX="206.0" layoutY="352.0" mnemonicParsing="false" style="-fx-background-color: CB595D;" text="Log In!" textFill="#0022ff" underline="true">
-               <font>
-                  <Font name="Calibri Bold" size="14.0" />
-               </font>
-            </Button>
-         </children></AnchorPane>
-   </children>
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="monstertrio.myanime.app.controllers.SignupController">
+   <AnchorPane prefHeight="400.0" prefWidth="250.0" style="-fx-background-color: CB595D;">
+      <ImageView fitHeight="202.0" fitWidth="245.0" layoutY="200.0" pickOnBounds="true">
+         <Image url="@../images/chopcrycover.jpg"/>
+      </ImageView>
+      <Label layoutX="16.0" layoutY="34.0" text="AniTracker">
+         <font>
+            <Font name="Franklin Gothic Demi" size="40.0"/>
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="81.0" prefHeight="30.0" prefWidth="154.0"
+             text="Product of MonsterTrio Inc.">
+         <font>
+            <Font name="Calibri Italic" size="12.0"/>
+         </font>
+      </Label>
+   </AnchorPane>
+   <AnchorPane prefHeight="432.0" prefWidth="424.0">
+      <TextField fx:id="tf_name" layoutX="117.0" layoutY="161.0" prefHeight="32.0" prefWidth="208.0"
+                 promptText="Name">
+         <font>
+            <Font name="Arial" size="12.0"/>
+         </font>
+      </TextField>
+      <TextField fx:id="tf_username" layoutX="117.0" layoutY="204.0" prefHeight="32.0" prefWidth="208.0"
+                 promptText="Username">
+         <font>
+            <Font name="Arial" size="12.0"/>
+         </font>
+      </TextField>
+      <TextField fx:id="tf_password" layoutX="117.0" layoutY="247.0" prefHeight="32.0" prefWidth="208.0"
+                 promptText="Password">
+         <font>
+            <Font name="Arial" size="12.0"/>
+         </font>
+      </TextField>
+      <ImageView fitHeight="109.0" fitWidth="104.0" layoutX="125.0" layoutY="14.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <image>
+            <Image url="@../images/thousandsunny.png"/>
+         </image>
+      </ImageView>
+      <Label layoutX="17.0" layoutY="166.0" text="Name">
+         <font>
+            <Font name="Calibri Bold" size="18.0"/>
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="209.0" text="Username">
+         <font>
+            <Font name="Calibri Bold" size="18.0"/>
+         </font>
+      </Label>
+      <Label layoutX="17.0" layoutY="252.0" text="Password">
+         <font>
+            <Font name="Calibri Bold" size="18.0"/>
+         </font>
+      </Label>
+      <Button fx:id="button_signup" alignment="CENTER" layoutX="130.0" layoutY="307.0" mnemonicParsing="false"
+              style="-fx-background-color: CB595D;" text="REGISTER" textAlignment="CENTER">
+         <font>
+            <Font name="Calibri Bold" size="18.0"/>
+         </font>
+      </Button>
+      <Button fx:id="button_login" layoutX="130.0" layoutY="359.0" mnemonicParsing="false"
+              style="-fx-background-color: transparent;" text="Back to Login" textFill="#0022ff"
+              underline="true">
+         <font>
+            <Font name="Calibri Bold" size="14.0"/>
+         </font>
+      </Button>
+   </AnchorPane>
 </HBox>
