@@ -12,6 +12,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
+
 public class LoginController implements Initializable {
 
     @FXML
@@ -23,19 +26,20 @@ public class LoginController implements Initializable {
     @FXML
     public Button button_signup;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         button_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DatabaseHelper helper= new DatabaseHelper();
-                String username=tf_username.getText();
-                String password=tf_password.getText();
+                DatabaseHelper helper = new DatabaseHelper();
+                String username = tf_username.getText();
+                String password = tf_password.getText();
 
                 try {
-                    int userId=helper.loginUser(username,password);
-                    if(userId!=0){
-                        DatabaseHelper.changeScene(actionEvent,"AnimeList.fxml","My List", userId, username,3);
+                    int userId = helper.loginUser(username, password);
+                    if (userId != 0) {
+                        DatabaseHelper.changeScene(actionEvent, "/views/AnimeList.fxml", "MyAniTracker - My List", userId, 3);
                     }
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
@@ -46,10 +50,9 @@ public class LoginController implements Initializable {
         button_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DatabaseHelper helper = new DatabaseHelper();
-                try{
-                    DatabaseHelper.changeScene(actionEvent,"SignUp.fxml", "Sign Up",0,"",2);
-                } catch (RuntimeException e){
+                try {
+                    DatabaseHelper.changeScene(actionEvent, "/views/SignUp.fxml", "MyAniTracker - Sign Up", 0, 0);
+                } catch (RuntimeException e) {
                     throw new RuntimeException(e);
                 }
             }
