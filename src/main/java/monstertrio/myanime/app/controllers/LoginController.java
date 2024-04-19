@@ -38,9 +38,10 @@ public class LoginController implements Initializable {
 
                 try {
                     int userId = helper.loginUser(username, password);
-                    if (userId != 0) {
+                    if (userId != -1) {
                         DatabaseHelper.changeScene(actionEvent, "/views/AnimeList.fxml", "MyAniTracker - My List", userId, 3);
                     }
+
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }

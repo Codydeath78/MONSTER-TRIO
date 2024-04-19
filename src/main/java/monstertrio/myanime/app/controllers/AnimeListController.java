@@ -1,19 +1,25 @@
 package monstertrio.myanime.app.controllers;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import monstertrio.myanime.app.helpers.DatabaseHelper;
 import monstertrio.myanime.app.models.Anime;
 
 public class AnimeListController {
 
-    public Button button_add_anime;
-    public Button button_log_out;
+    @FXML
+    private Button button_add_anime;
+
+    @FXML
+    private Button button_log_out;
+
+    @FXML
+    private Label label_welcome;
+
     @FXML
     private TableView<Anime> animeTableView;
 
@@ -43,15 +49,15 @@ public class AnimeListController {
 
     private final DatabaseHelper helper;
     private int userId;
-
+    private String name;
 
     public AnimeListController() {
         helper = new DatabaseHelper();
     }
 
-    public void setUserInformation(int userId) {
+    public void setUserInformation(int userId, String name) {
         this.userId = userId;
-
+        label_welcome.setText("Welcome, "+name+"!");
     }
 
     public void initialize() {
@@ -82,43 +88,14 @@ public class AnimeListController {
                 }
             }
         });
+
+        button_add_anime.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DatabaseHelper.changeScene(actionEvent,"/views/AnimeAdd.fxml","MyAniTracker - Add Anime", userId,4);
+            }
+        });
         ObservableList<Anime> animeList = helper.getAnimeListForUser(userId);
         animeTableView.setItems(animeList);
     }
-    /*public void switchToAnimeList(ActionEvent event) throws IOException
-    {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/AnimeList.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 700, 400);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
-    public void displayAnimeListImage(){
-        myAnimeListImageView.setImage(myAnimeListImage);
-    }
-
-
-    public AnimeListController() {
-        myAnimeListImage = new Image(getClass().getResourceAsStream("/images/second.jpg"));
-
-    }
-
-
-    public void goToAnimeAdd(ActionEvent event) throws IOException
-    {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/AnimeAdd.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 700, 400);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-    public void EXIT(ActionEvent event) throws IOException
-    {
-        Platform.exit();
-
-    }*/
-
 }

@@ -55,7 +55,7 @@ public class SignupController implements Initializable {
                 }
                 if (signupsuccessful) {
                     System.out.println("Sign up successful! Redirecting to login scene...");
-                    DatabaseHelper.changeScene(actionEvent, "/views/Login.fxml/", "AniTracker - Login", 0, 0);
+                    DatabaseHelper.changeScene(actionEvent, "/views/Login.fxml", "AniTracker - Login", 0, 0);
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Signup Error");
