@@ -13,7 +13,6 @@ import monstertrio.myanime.app.controllers.AnimeListController;
 import monstertrio.myanime.app.models.Anime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -30,7 +29,6 @@ public class DatabaseHelper {
 
     public static void changeScene(ActionEvent event, String fxmlFile, String title, int userId, int page) {
         Parent root = null;
-
         try {
             FXMLLoader loader = new FXMLLoader(DatabaseHelper.class.getResource(fxmlFile));
             root = loader.load();
@@ -38,7 +36,8 @@ public class DatabaseHelper {
             if (page == 3 || page == 4) {//AnimeList or Anime Add
                 if (page == 3) {
                     AnimeListController animeListController = loader.getController();
-                    animeListController.setUserInformation(userId);
+                    String name=getName(userId);
+                    animeListController.setUserInformation(userId, name);
                 } else {
                     AnimeAddController animeAddController = loader.getController();
                     animeAddController.setUserInformation(userId);
@@ -57,23 +56,67 @@ public class DatabaseHelper {
 
 //Login User
     public int loginUser(String username, String password) throws SQLException {
-        String query = "SELECT * FROM users WHERE username= ? AND password=?";
+        String query = "SELECT id, password FROM users WHERE username= ?";
         String hashedPassword = hashPassword(password);
-        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query);) {
-            pstmt.setString(1, username);
-            pstmt.setString(2, password);
-            ResultSet resultSet = pstmt.executeQuery();
-            closeConnection(conn);
-            if (resultSet.next())
-                return resultSet.getInt("id");
-        } catch (SQLException e) {
-            System.out.println("Error adding user: " + e.getMessage());
-            throw e;
+        Connection conn = null;
+        try {
+            conn = getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
+            if (resultSet.next()){
+                String storedHashedPassword = resultSet.getString("password");
+                assert hashedPassword != null;
+                if(hashedPassword.equals(storedHashedPassword)){
+                    System.out.println("User Logged In Successfully. ");
+                    return resultSet.getInt("id");
+                }else{
+                    System.out.println("Incorrect password.");
+                }
+            } else {
+                System.out.println("User not found.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error logging in: " + e.getMessage());
+            throw e;
+        }finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    System.out.println("Error closing connection: " + e.getMessage());
+                }
+            }
         }
-        return 0;
+        return -1;
     }
 
+    private static String getName(int userId){
+        String name = "";
+        Connection conn = null;
+        String query = "SELECT name FROM users WHERE id=?";
+        try {
+            conn = getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                name = resultSet.getString("name");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error getting name: " + e.getMessage());
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    System.out.println("Error closing connection: " + e.getMessage());
+                }
+            }
+        }
+        return name;
+    }
     //add User
     public boolean signUpUser(String name, String username, String password) throws SQLException {
         // String query1="SELECT * FROM users WHERE username=?";
@@ -164,7 +207,7 @@ public class DatabaseHelper {
 
     public void deleteAnime(int animeID) {
         String query = "DELETE FROM anime WHERE id = ?";
-        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query);) {
+        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, String.valueOf(animeID));
             pstmt.executeUpdate();
             closeConnection(conn);
