@@ -18,16 +18,18 @@ public class Anime {
         this.rating = 0;
         this.status = "";
         this.genre = "";
+        this.imageUrl="";
         this.userId = 0;
         //this.imageUrl = "";
     }
 
-    public Anime(String title, String description, int rating, String status, String genre, int userId) {
+    public Anime(String title, String description, int rating, String status, String genre, String imageUrl, int userId) {
         this.title = title;
         this.desc = description;
         this.rating = rating;
         this.status = status;
         this.genre = genre;
+        this.imageUrl=imageUrl;
         this.userId = userId;
     }
 
