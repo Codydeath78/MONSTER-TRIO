@@ -7,38 +7,38 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="monstertrio.myanime.app.controllers.AnimeListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monstertrio.myanime.app.controllers.AnimeListController">
     <children>
         <TableView fx:id="animeTableView" editable="true" layoutY="55.0" prefHeight="345.0" prefWidth="600.0">
             <columns>
-                <TableColumn fx:id="column_index" prefWidth="75.0" text="#"/>
-                <TableColumn fx:id="column_image" prefWidth="71.42859649658203" text="Image"/>
-                <TableColumn fx:id="column_title" prefWidth="71.42859649658203" text="Title"/>
-                <TableColumn fx:id="column_desc" prefWidth="71.42859649658203" text="Description"/>
-                <TableColumn fx:id="column_rating" prefWidth="71.42859649658203" text="Rating"/>
-                <TableColumn fx:id="column_genre" prefWidth="71.42859649658203" text="Genre"/>
-                <TableColumn fx:id="column_progress" prefWidth="71.42859649658203" text="Progress"/>
-                <TableColumn fx:id="column_delete" prefWidth="75.0" text="Delete"/>
+                <TableColumn fx:id="column_index" prefWidth="22.857178568840027" text="#" />
+                <TableColumn fx:id="column_image" prefWidth="82.85711479187012" text="Image" />
+                <TableColumn fx:id="column_title" prefWidth="113.71430206298828" text="Title" />
+                <TableColumn fx:id="column_desc" prefWidth="135.9999237060547" text="Description" />
+                <TableColumn fx:id="column_rating" minWidth="0.0" prefWidth="74.857177734375" text="Rating" />
+                <TableColumn fx:id="column_genre" prefWidth="82.8570556640625" text="Genre" />
+                <TableColumn fx:id="column_status" prefWidth="86.28564453125" text="Status" />
             </columns>
         </TableView>
-        <Button fx:id="button_add_anime" layoutX="408.0" layoutY="16.0" mnemonicParsing="false"
-                style="-fx-background-color: CB595D;" text="Add">
+        <Button fx:id="button_add_anime" layoutX="397.0" layoutY="16.0" mnemonicParsing="false" style="-fx-background-color: CB595D;" text="Add">
             <font>
-                <Font name="Calibri Bold" size="18.0"/>
+                <Font name="Calibri Bold" size="14.0" />
             </font>
         </Button>
-        <Button fx:id="button_log_out" layoutX="486.0" layoutY="15.0" mnemonicParsing="false" prefHeight="35.0"
-                prefWidth="100.0" style="-fx-background-color: CB595D;" text="Log Out">
+        <Button fx:id="button_log_out" layoutX="513.0" layoutY="16.0" mnemonicParsing="false" prefHeight="1.0" prefWidth="86.0" style="-fx-background-color: CB595D;" text="Log Out">
             <font>
-                <Font name="Calibri Bold" size="18.0"/>
+                <Font name="Calibri Bold" size="14.0" />
             </font>
         </Button>
         <Label fx:id="label_welcome" layoutX="14.0" layoutY="9.0" prefHeight="47.0" prefWidth="383.0" text="Welcome, ">
             <font>
-                <Font name="Franklin Gothic Demi" size="40.0"/>
+                <Font name="Franklin Gothic Demi" size="40.0" />
             </font>
         </Label>
+      <Button fx:id="button_delete_anime" layoutX="450.0" layoutY="16.0" mnemonicParsing="false" style="-fx-background-color: CB595D;" text="Delete">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

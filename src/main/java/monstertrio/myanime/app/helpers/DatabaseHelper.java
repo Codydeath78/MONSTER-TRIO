@@ -174,6 +174,7 @@ public class DatabaseHelper {
                 anime.setGenre(resultSet.getString("genre"));
                 anime.setImageUrl(resultSet.getString("image_url"));
                 animeList.add(anime);
+                System.out.println("Retrieved anime for the user: "+anime.getTitle());
             }
             closeConnection(conn);
         } catch (SQLException e) {
@@ -205,10 +206,10 @@ public class DatabaseHelper {
     }
 
 
-    public void deleteAnime(int animeID) {
+    public void deleteAnime(int animeId) {
         String query = "DELETE FROM anime WHERE id = ?";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
-            pstmt.setString(1, String.valueOf(animeID));
+            pstmt.setString(1, String.valueOf(animeId));
             pstmt.executeUpdate();
             closeConnection(conn);
         } catch (SQLException e) {

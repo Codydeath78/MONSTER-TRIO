@@ -1,15 +1,23 @@
 package monstertrio.myanime.app.controllers;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import monstertrio.myanime.app.helpers.DatabaseHelper;
 import monstertrio.myanime.app.models.Anime;
 
-public class AnimeListController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class AnimeListController implements Initializable {
+
+    @FXML
+    private Button button_delete_anime;
 
     @FXML
     private Button button_add_anime;
@@ -42,15 +50,11 @@ public class AnimeListController {
     private TableColumn<Anime, String> column_genre;
 
     @FXML
-    private TableColumn<Anime, String> column_progress;
-
-    @FXML
-    private TableColumn<Anime, Void> column_delete;
+    private TableColumn<Anime, String> column_status;
 
     private final DatabaseHelper helper;
     private int userId;
-    private String name;
-
+    public ObservableList<Anime> animeList= FXCollections.observableArrayList();
     public AnimeListController() {
         helper = new DatabaseHelper();
     }
@@ -60,42 +64,36 @@ public class AnimeListController {
         label_welcome.setText("Welcome, "+name+"!");
     }
 
-    public void initialize() {
-        column_index.setCellValueFactory(new PropertyValueFactory<>("#"));
-        column_image.setCellValueFactory(new PropertyValueFactory<>("Image"));
-        column_title.setCellValueFactory(new PropertyValueFactory<>("Title"));
-        column_desc.setCellValueFactory(new PropertyValueFactory<>("desc"));
-        column_rating.setCellValueFactory(new PropertyValueFactory<>("rating"));
-        column_genre.setCellValueFactory(new PropertyValueFactory<>("genre"));
-        column_progress.setCellValueFactory(new PropertyValueFactory<>("progress"));
-        column_delete.setCellFactory(param -> new TableCell<>() {
-            private final Button deleteButton = new Button("Delete");
-
-            {
-                deleteButton.setOnAction(event -> {
-                    Anime anime = getTableView().getItems().get(getIndex());
-                    animeTableView.getItems().remove(anime);
-                });
-            }
-
-            @Override
-            protected void updateItem(Void item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(deleteButton);
-                }
-            }
-        });
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        column_index.setCellValueFactory(new PropertyValueFactory<Anime, Integer>("id"));
+        column_image.setCellValueFactory(new PropertyValueFactory<Anime, String>("imageUrl"));
+        column_title.setCellValueFactory(new PropertyValueFactory<Anime, String>("title"));
+        column_desc.setCellValueFactory(new PropertyValueFactory<Anime, String>("desc"));
+        column_rating.setCellValueFactory(new PropertyValueFactory<Anime, Integer>("rating"));
+        column_status.setCellValueFactory(new PropertyValueFactory<Anime, String>("status"));
+        column_genre.setCellValueFactory(new PropertyValueFactory<Anime, String>("genre"));
+        animeList=helper.getAnimeListForUser(userId);
+        animeTableView.setItems(animeList);
+        System.out.println("Viewing items for user with id: "+userId);
         button_add_anime.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 DatabaseHelper.changeScene(actionEvent,"/views/AnimeAdd.fxml","MyAniTracker - Add Anime", userId,4);
             }
         });
-        ObservableList<Anime> animeList = helper.getAnimeListForUser(userId);
-        animeTableView.setItems(animeList);
+        button_log_out.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("Switching Scenes");
+                DatabaseHelper.changeScene(actionEvent,"/views/Login.fxml","MyAniTracker - Login", -1,0);
+            }
+        });
+
+        button_delete_anime.setOnAction(e->{
+            Anime anime=animeTableView.getSelectionModel().getSelectedItem();
+            animeTableView.getItems().remove(anime);
+            helper.deleteAnime(anime.getId());
+        });
     }
 }
