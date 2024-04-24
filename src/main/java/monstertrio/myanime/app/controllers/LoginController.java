@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import monstertrio.myanime.app.helpers.DatabaseHelper;
@@ -37,9 +38,16 @@ public class LoginController implements Initializable {
                 String password = tf_password.getText();
 
                 try {
-                    int userId = helper.loginUser(username, password);
+                    int userId = helper.loginUser(username.trim(), password);
                     if (userId != -1) {
                         DatabaseHelper.changeScene(actionEvent, "/views/AnimeList.fxml", "MyAniTracker - My List", userId, 3);
+                    }
+                    else{
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Login Error");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Incorrect Username or Password");
+                        alert.showAndWait();
                     }
 
                 } catch (SQLException e) {

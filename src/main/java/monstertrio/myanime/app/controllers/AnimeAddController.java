@@ -70,6 +70,12 @@ public class AnimeAddController implements Initializable {
                         alert.showAndWait();
                         e.printStackTrace();
                     }
+                } else{
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Validation Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Please enter text, not blank text!");
+                    alert.showAndWait();
                 }
             }
         });

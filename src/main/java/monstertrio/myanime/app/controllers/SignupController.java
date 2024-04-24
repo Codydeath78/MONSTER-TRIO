@@ -33,13 +33,6 @@ public class SignupController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         DatabaseHelper helper = new DatabaseHelper();
-        //create event handler for button
-        //create instance database helper class
-        //we will call the sign up method from databasehelper
-        // we will input into the method: tf_name, tf_username, and tf_password
-        //if function returns true we will indicate to user that sign in worked and send them back to login scene
-        //if it returns false that means that the username they entered is incorrect.
-        // an alert should popup explaining that they need a different username
         button_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
