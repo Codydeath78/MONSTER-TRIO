@@ -34,7 +34,7 @@ public class DatabaseHelper {
             root = loader.load();
 
             if (page == 3 || page == 4) {//AnimeList or Anime Add
-                if (page == 3) {
+                if (page == 3) {//anime list
                     AnimeListController animeListController = loader.getController();
                     String name=getName(userId);
                     animeListController.setUserInformation(userId, name);

@@ -52,20 +52,23 @@ public class AnimeListController implements Initializable {
     @FXML
     private TableColumn<Anime, String> column_status;
 
-    private final DatabaseHelper helper;
     private int userId;
+
     public ObservableList<Anime> animeList= FXCollections.observableArrayList();
-    public AnimeListController() {
-        helper = new DatabaseHelper();
-    }
+
+
+
+
+
 
     public void setUserInformation(int userId, String name) {
         this.userId = userId;
         label_welcome.setText("Welcome, "+name+"!");
+        initializeUI();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle){
+    private void initializeUI(){
+        DatabaseHelper helper = new DatabaseHelper();
         column_index.setCellValueFactory(new PropertyValueFactory<Anime, Integer>("id"));
         column_image.setCellValueFactory(new PropertyValueFactory<Anime, String>("imageUrl"));
         column_title.setCellValueFactory(new PropertyValueFactory<Anime, String>("title"));
@@ -96,4 +99,6 @@ public class AnimeListController implements Initializable {
             helper.deleteAnime(anime.getId());
         });
     }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle){}
 }
