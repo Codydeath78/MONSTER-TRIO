@@ -46,11 +46,16 @@ public class SignupController implements Initializable {
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
+                Alert alert = new Alert(Alert.AlertType.ERROR);
                 if (signupsuccessful) {
+                    int userId=helper.get_user_id(username);
+                    alert.setTitle("Your Recovery Code");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Please Write Down This Secret ID for password recovery: " + userId);
+                    alert.showAndWait();
                     System.out.println("Sign up successful! Redirecting to login scene...");
-                    DatabaseHelper.changeScene(actionEvent, "/views/Login.fxml", "AniTracker - Login", 0, 0);
+                    DatabaseHelper.changeScene(actionEvent, "/views/Login.fxml", "AniTracker - Login", -1, 0);
                 } else {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Signup Error");
                     alert.setHeaderText(null);
                     alert.setContentText("The username you entered is already taken. Please choose a different username.");
@@ -62,7 +67,7 @@ public class SignupController implements Initializable {
         button_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DatabaseHelper.changeScene(actionEvent, "/views/Login.fxml", "MyAniTracker - Login", 0, 0);
+                DatabaseHelper.changeScene(actionEvent, "/views/Login.fxml", "MyAniTracker - Login", -1, 0);
             }
         });
 
