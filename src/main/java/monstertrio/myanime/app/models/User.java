@@ -1,5 +1,6 @@
 package monstertrio.myanime.app.models;
 
+//this class is no longer in use
 public class User {
     private int id;
     private String username;

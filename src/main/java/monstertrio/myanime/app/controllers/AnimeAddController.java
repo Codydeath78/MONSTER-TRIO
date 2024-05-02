@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class AnimeAddController implements Initializable {
+
     @FXML
     private TextField tf_title;
 
@@ -36,6 +37,9 @@ public class AnimeAddController implements Initializable {
 
     @FXML
     private Button button_add_anime;
+
+    @FXML
+    public Button button_back;
 
     private int userId;
 
@@ -59,10 +63,10 @@ public class AnimeAddController implements Initializable {
                 String imageUrl = tf_image_url.getText();
                 if (title != null && !title.isEmpty() && description != null && !description.isEmpty() && rating != null && status != null && !status.isEmpty() && genre != null && !genre.isEmpty() && imageUrl != null && !imageUrl.isEmpty()) {
                     Anime anime = new Anime(title, description, rating, status, genre, imageUrl, userId);
-                    try{
+                    try {
                         helper.addAnime(anime);
-                        DatabaseHelper.changeScene(actionEvent,"/views/AnimeList.fxml","MyAniTracker - My List", userId, 3);
-                    }catch (RuntimeException e){
+                        DatabaseHelper.changeScene(actionEvent, "/views/AnimeList.fxml", "MyAniTracker - My List", userId, 3);
+                    } catch (RuntimeException e) {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Error Encountered");
                         alert.setHeaderText(null);
@@ -70,12 +74,23 @@ public class AnimeAddController implements Initializable {
                         alert.showAndWait();
                         e.printStackTrace();
                     }
-                } else{
+                } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Validation Error");
                     alert.setHeaderText(null);
                     alert.setContentText("Please enter text, not blank text!");
                     alert.showAndWait();
+                }
+            }
+        });
+
+        button_back.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                try {
+                    DatabaseHelper.changeScene(actionEvent, "/views/AnimeList.fxml", "MyAniTracker -  My List", userId, 3);
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
                 }
             }
         });

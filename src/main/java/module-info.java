@@ -3,7 +3,6 @@ module monstertrio.myanime {
     requires javafx.fxml;
     requires org.slf4j;
     requires java.sql;
-    requires org.controlsfx.controls;
 
     exports monstertrio.myanime.app;
     exports monstertrio.myanime.app.controllers;

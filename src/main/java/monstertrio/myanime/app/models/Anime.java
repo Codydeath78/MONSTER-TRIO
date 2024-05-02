@@ -18,7 +18,7 @@ public class Anime {
         this.rating = 0;
         this.status = "";
         this.genre = "";
-        this.imageUrl="";
+        this.imageUrl = "";
         this.userId = 0;
         //this.imageUrl = "";
     }
@@ -29,7 +29,7 @@ public class Anime {
         this.rating = rating;
         this.status = status;
         this.genre = genre;
-        this.imageUrl=imageUrl;
+        this.imageUrl = imageUrl;
         this.userId = userId;
     }
 

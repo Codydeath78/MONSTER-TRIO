@@ -1,10 +1,10 @@
 package monstertrio.myanime.app;
 
-import javafx.stage.Stage;
-import javafx.scene.Parent;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
