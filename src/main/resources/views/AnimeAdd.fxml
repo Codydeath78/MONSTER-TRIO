@@ -1,81 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0"
-            prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="monstertrio.myanime.app.controllers.AnimeAddController">
-    <Button fx:id="button_add_anime" layoutX="391.0" layoutY="326.0" mnemonicParsing="false" prefHeight="44.0"
-            prefWidth="72.0" style="-fx-background-color: CB595D;" text="ADD">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monstertrio.myanime.app.controllers.AnimeAddController">
+    <Button fx:id="button_add_anime" layoutX="400.0" layoutY="360.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="59.0" style="-fx-background-color: CB595D;" text="ADD">
         <font>
-            <Font name="Calibri Bold" size="18.0"/>
+            <Font name="Calibri Bold" size="18.0" />
         </font>
     </Button>
-    <AnchorPane layoutX="-2.0" layoutY="-6.0" prefHeight="410.0" prefWidth="227.0"
-                style="-fx-background-color: CB595D;">
-        <ImageView fitHeight="236.0" fitWidth="225.0" layoutX="1.0" layoutY="185.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <Image url="@../images/second.jpg"/><!--add image to project under images-->
+    <AnchorPane layoutX="-2.0" layoutY="-6.0" prefHeight="410.0" prefWidth="227.0" style="-fx-background-color: CB595D;">
+        <ImageView fitHeight="236.0" fitWidth="225.0" layoutX="1.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/second.jpg" /><!--add image to project under images-->
         </ImageView>
-        <Label layoutX="13.0" layoutY="36.0" text="AniTracker">
+        <Label layoutX="19.0" layoutY="35.0" text="AniTracker">
             <font>
-                <Font name="Franklin Gothic Demi" size="40.0"/>
+                <Font name="Franklin Gothic Demi" size="40.0" />
             </font>
         </Label>
-        <Label layoutX="31.0" layoutY="83.0" prefHeight="30.0" prefWidth="154.0" text="Product of MonsterTrio Inc.">
+        <Label layoutX="36.0" layoutY="82.0" prefHeight="30.0" prefWidth="154.0" text="Product of MonsterTrio Inc.">
             <font>
-                <Font name="Calibri Italic" size="12.0"/>
+                <Font name="Calibri Italic" size="12.0" />
             </font>
         </Label>
     </AnchorPane>
-    <TextField fx:id="tf_title" layoutX="360.0" layoutY="79.0" promptText="Title"/>
-    <TextField fx:id="tf_genre" layoutX="360.0" layoutY="235.0" promptText="Genre"/>
-    <TextField fx:id="tf_status" layoutX="360.0" layoutY="199.0" promptText="Status"/>
-    <TextField fx:id="tf_description" layoutX="360.0" layoutY="118.0" promptText="Description"/>
-    <TextField fx:id="tf_image_url" layoutX="360.0" layoutY="271.0"/>
-    <Label layoutX="317.0" layoutY="80.0" text="Title">
+    <TextField fx:id="tf_title" layoutX="330.0" layoutY="65.0" />
+    <TextArea fx:id="ta_description" layoutX="330.0" layoutY="105.0" prefHeight="107.0" prefWidth="235.0" />
+    <ChoiceBox fx:id="cb_rating" layoutX="330.0" layoutY="220.0" prefHeight="25.0" prefWidth="24.0" />
+    <ChoiceBox fx:id="cb_status" layoutX="330.0" layoutY="255.0" prefHeight="25.0" prefWidth="124.0" />
+    <TextField fx:id="tf_genre" layoutX="330.0" layoutY="290.0">
+      <font>
+         <Font name="Calibri" size="12.0" />
+      </font></TextField>
+    <TextField fx:id="tf_image_url" layoutX="330.0" layoutY="320.0">
+      <font>
+         <Font name="Calibri" size="12.0" />
+      </font></TextField>
+    <Label layoutX="235.0" layoutY="65.0" text="Title">
         <font>
-            <Font name="Calibri Bold" size="18.0"/>
+            <Font name="Calibri Bold" size="18.0" />
         </font>
     </Label>
-    <Label layoutX="264.0" layoutY="119.0" text="Description">
+    <Label layoutX="235.0" layoutY="105.0" text="Description">
         <font>
-            <Font name="Calibri Bold" size="18.0"/>
+            <Font name="Calibri Bold" size="18.0" />
         </font>
     </Label>
-    <Label layoutX="296.0" layoutY="160.0" text="Rating">
+    <Label layoutX="235.0" layoutY="220.0" text="Rating">
         <font>
-            <Font name="Calibri Bold" size="18.0"/>
+            <Font name="Calibri Bold" size="18.0" />
         </font>
     </Label>
-    <Label layoutX="297.0" layoutY="201.0" text="Status">
+    <Label layoutX="235.0" layoutY="255.0" text="Status">
         <font>
-            <Font name="Calibri Bold" size="18.0"/>
+            <Font name="Calibri Bold" size="18.0" />
         </font>
     </Label>
-    <Label layoutX="298.0" layoutY="237.0" text="Genre">
+    <Label layoutX="235.0" layoutY="290.0" text="Genre">
         <font>
-            <Font name="Calibri Bold" size="18.0"/>
+            <Font name="Calibri Bold" size="18.0" />
         </font>
     </Label>
-    <Label layoutX="270.0" layoutY="272.0" text="Image Url">
+    <Label layoutX="235.0" layoutY="320.0" text="Image URL">
         <font>
-            <Font name="Calibri Bold" size="18.0"/>
+            <Font name="Calibri Bold" size="18.0" />
         </font>
     </Label>
-    <Label layoutX="297.0" layoutY="13.0" prefHeight="30.0" prefWidth="261.0" text="Add Your Anime">
+    <Label layoutX="275.0" layoutY="10.0" prefHeight="30.0" prefWidth="261.0" text="Add Your Anime">
         <font>
-            <Font name="Calibri Italic" size="40.0"/>
+            <Font name="Franklin Gothic Demi" size="36.0" />
         </font>
     </Label>
-    <ChoiceBox fx:id="cb_rating" layoutX="359.0" layoutY="158.0" prefWidth="150.0"/>
-    <Button fx:id="button_back" layoutX="562.0" layoutY="19.0" mnemonicParsing="false" prefHeight="35.0"
-            prefWidth="124.0" style="-fx-background-color: CB595D;" text="Back to List">
+    <Button fx:id="button_back" layoutX="570.0" layoutY="15.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: CB595D;" text="Back to List">
         <font>
-            <Font name="Calibri Bold" size="18.0"/>
+            <Font name="Calibri Bold" size="18.0" />
         </font>
     </Button>
 </AnchorPane>
