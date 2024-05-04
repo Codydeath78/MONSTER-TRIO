@@ -29,7 +29,7 @@ public class DatabaseHelper {
     }
 
     public static void changeScene(ActionEvent event, String fxmlFile, String title, int userId, int page) {
-        Parent root = null;
+        Parent root;
         try {
             FXMLLoader loader = new FXMLLoader(DatabaseHelper.class.getResource(fxmlFile));
             root = loader.load();
@@ -100,7 +100,7 @@ public class DatabaseHelper {
         String query = "SELECT id FROM users WHERE username= ?";
 
         try (Connection conn = getConnection();
-             PreparedStatement preparedStatement = conn.prepareStatement(query);
+             PreparedStatement preparedStatement = conn.prepareStatement(query)
         ) {
             preparedStatement.setString(1, username);
             ResultSet resultSet = preparedStatement.executeQuery();

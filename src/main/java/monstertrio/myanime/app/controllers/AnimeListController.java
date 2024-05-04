@@ -14,9 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import monstertrio.myanime.app.helpers.DatabaseHelper;
 import monstertrio.myanime.app.models.Anime;
 
@@ -66,7 +63,6 @@ public class AnimeListController implements Initializable {
     private TableColumn<Anime, String> column_status;
 
     private int userId;
-    private static final Logger logger = LoggerFactory.getLogger(DatabaseHelper.class);
 
     public ObservableList<Anime> animeList = FXCollections.observableArrayList();
 

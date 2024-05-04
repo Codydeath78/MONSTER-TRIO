@@ -74,8 +74,6 @@ public class EditAnimeController {
             stage.close();
         });
 
-        button_back.setOnAction(actionEvent -> {
-            stage.close();
-        });
+        button_back.setOnAction(actionEvent -> stage.close());
     }
 }
