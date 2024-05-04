@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.*?>
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+      prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="monstertrio.myanime.app.controllers.EditAnimeController">
+    <AnchorPane prefHeight="600.0" prefWidth="330.0" style="-fx-background-color: CB595D;">
+        <ImageView fitHeight="281.0" fitWidth="330.0" layoutY="319.0" pickOnBounds="true">
+            <Image url="@../images/editanimeimage.png"/>
+        </ImageView>
+        <Label layoutX="70.0" layoutY="30.0" text="AniTracker">
+            <font>
+                <Font name="Franklin Gothic Demi" size="40.0"/>
+            </font>
+        </Label>
+        <Label layoutX="98.0" layoutY="77.0" text="Product of MonsterTrio Inc.">
+            <font>
+                <Font name="Calibri Italic" size="12.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
+    <AnchorPane prefHeight="600.0" prefWidth="570.0">
+        <Label layoutX="203.0" layoutY="15.0" text="Edit Anime">
+            <font>
+                <Font name="Calibri Bold" size="36.0"/>
+            </font>
+        </Label>
+        <Label layoutX="15.0" layoutY="115.0" text="Title">
+            <font>
+                <Font name="Calibri Bold" size="18.0"/>
+            </font>
+        </Label>
+        <Label layoutX="15.0" layoutY="160.0" text="Description">
+            <font>
+                <Font name="Calibri Bold" size="18.0"/>
+            </font>
+        </Label>
+        <Label layoutX="15.0" layoutY="400.0" text="Rating">
+            <font>
+                <Font name="Calibri Bold" size="18.0"/>
+            </font>
+        </Label>
+        <Label layoutX="15.0" layoutY="455.0" text="Status">
+            <font>
+                <Font name="Calibri Bold" size="18.0"/>
+            </font>
+        </Label>
+        <Label layoutX="15.0" layoutY="345.0" text="Genre">
+            <font>
+                <Font name="Calibri Bold" size="18.0"/>
+            </font>
+        </Label>
+        <Label layoutX="15.0" layoutY="510.0" text="Image URL">
+            <font>
+                <Font name="Calibri Bold" size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="tf_new_title" layoutX="115.0" layoutY="115.0">
+            <font>
+                <Font name="Calibri" size="12.0"/>
+            </font>
+        </TextField>
+        <TextArea fx:id="ta_new_desc" layoutX="115.0" layoutY="160.0" prefHeight="150.0" prefWidth="300.0">
+            <font>
+                <Font name="Calibri" size="12.0"/>
+            </font>
+        </TextArea>
+        <ChoiceBox fx:id="cb_new_rating" layoutX="115.0" layoutY="400.0" prefHeight="25.0" prefWidth="24.0"/>
+        <ChoiceBox fx:id="cb_new_status" layoutX="115.0" layoutY="455.0" prefHeight="25.0" prefWidth="124.0"/>
+        <TextField fx:id="tf_new_genre" layoutX="115.0" layoutY="345.0">
+            <font>
+                <Font name="Calibri" size="12.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="tf_new_image_url" layoutX="115.0" layoutY="510.0">
+            <font>
+                <Font name="Calibri" size="12.0"/>
+            </font>
+        </TextField>
+
+        <Button id="button_submit" fx:id="button_submit" alignment="CENTER" layoutX="235.0" layoutY="550.0"
+                mnemonicParsing="false" prefHeight="20.0" prefWidth="100.0"
+                style="-fx-background-color: CB595D; -fx-background-radius: 5; -fx-cursor: hand;" text="Submit">
+            <font>
+                <Font name="Calibri Bold" size="18.0"/>
+            </font>
+        </Button>
+        <Button id="button_submit" fx:id="button_back" alignment="CENTER" layoutX="457.0" layoutY="21.0"
+                mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0"
+                style="-fx-background-color: CB595D; -fx-background-radius: 5; -fx-cursor: hand;" text="Back to List">
+            <font>
+                <Font name="Calibri Bold" size="16.0"/>
+            </font>
+        </Button>
+        <Label layoutX="212.0" layoutY="56.0" text="Please Edit Details Below">
+            <font>
+                <Font name="Calibri Bold" size="14.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
+</HBox>

@@ -93,51 +93,27 @@ public class DatabaseHelper {
         return -1;
     }
 
-    private static String getName(int userId) {
-        String name = "";
-        Connection conn = null;
-        String query = "SELECT name FROM users WHERE id=?";
-        try {
-            conn = getConnection();
-            PreparedStatement preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setInt(1, userId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                name = resultSet.getString("name");
-            }
-        } catch (SQLException e) {
-            System.out.println("Error getting name: " + e.getMessage());
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    System.out.println("Error closing connection: " + e.getMessage());
-                }
-            }
-        }
-        return name;
-    }
 
-
+    //Get User ID for password recovery
     public int get_user_id(String username) {
         int user_id = -1;
         String query = "SELECT id FROM users WHERE username= ?";
 
-        try(Connection conn = getConnection();
-            PreparedStatement preparedStatement=conn.prepareStatement(query);
+        try (Connection conn = getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(query);
         ) {
-            preparedStatement.setString(1,username);
-            ResultSet resultSet= preparedStatement.executeQuery();
-            if(resultSet.next()){
-                user_id=resultSet.getInt("id");
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                user_id = resultSet.getInt("id");
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             logger.error("Error retrieving user ID for username '{}': {}", username, e.getMessage());
 
         }
         return user_id;
     }
+
     //add User
     public boolean signUpUser(String name, String username, String password) throws SQLException {
         // String query1="SELECT * FROM users WHERE username=?";
@@ -164,7 +140,7 @@ public class DatabaseHelper {
         return false;
     }
 
-    public boolean changeUserPassword(int user_id, String username, String newPassword) throws SQLException {
+    public void changeUserPassword(int user_id, String username, String newPassword) throws SQLException {
         String query1 = "SELECT username from users where id=?";
         String query2 = "UPDATE users SET password=? WHERE id=?";
         try (Connection conn = getConnection();
@@ -181,7 +157,6 @@ public class DatabaseHelper {
                     preparedStatement1.executeUpdate();
                     closeConnection(conn);
                     logger.info("Password updated successfully for user: {}", username);
-                    return true;
                 } else {
                     logger.warn("Username '{}' does not match stored username '{}'", username, storedUsername);
                 }
@@ -189,25 +164,11 @@ public class DatabaseHelper {
                 logger.warn("No user found with ID: {}", user_id);
             }
         } catch (SQLException e) {
-            logger.error("SQL Exception occurred: {}", e.getMessage());
+            logger.error("SQL Exception occurred in changeUserPassword: {}", e.getMessage());
         }
-        return false;
     }
 
-    private boolean checkUsername(String username, Connection conn) {
-        String query = "SELECT * FROM users WHERE username=?";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-            preparedStatement.setString(1, username);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.isBeforeFirst()) {
-                System.out.println("User already exists!");
-                return false;
-            }
-        } catch (SQLException e) {
-            logger.error("An error occurred:", e);
-        }
-        return true;
-    }
+    /*********************************Anime Functions*********************************/
 
     public ObservableList<Anime> getAnimeListForUser(int userId) {
         ObservableList<Anime> animeList = FXCollections.observableArrayList();
@@ -225,17 +186,15 @@ public class DatabaseHelper {
                 anime.setGenre(resultSet.getString("genre"));
                 anime.setImageUrl(resultSet.getString("image_url"));
                 animeList.add(anime);
-                System.out.println("Retrieved anime for the user: " + anime.getTitle());
+                logger.info("Retrieved anime \"{}\" for the user:", anime.getTitle());
             }
             closeConnection(conn);
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("SQL Exception occurred in getAnimeListForUser: {}", e.getMessage());
         }
         return animeList;
     }
 
-
-    //addAnime
     public void addAnime(Anime anime) {
         String query = "INSERT INTO anime (title, desc, rating, status, genre, user_id, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -256,7 +215,6 @@ public class DatabaseHelper {
         }
     }
 
-
     public void deleteAnime(int animeId) {
         String query = "DELETE FROM anime WHERE id = ?";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -268,6 +226,25 @@ public class DatabaseHelper {
         }
     }
 
+    public void updateAnime(Anime anime){
+        String query = "UPDATE anime SET title=?, desc=?, rating=?, status=?, genre=?, image_url=? WHERE id=?";
+        try(Connection conn = getConnection();PreparedStatement preparedStatement=conn.prepareStatement(query)) {
+            preparedStatement.setString(1, anime.getTitle());
+            preparedStatement.setString(2, anime.getDesc());
+            preparedStatement.setInt(3, anime.getRating());
+            preparedStatement.setString(4, anime.getStatus());
+            preparedStatement.setString(5, anime.getGenre());
+            preparedStatement.setString(6, anime.getImageUrl());
+            preparedStatement.setInt(7, anime.getId());
+            preparedStatement.executeUpdate();
+            closeConnection(conn);
+            logger.info("Anime Successfully Updated");
+        } catch (SQLException e) {
+            logger.error("An error occurred:", e);
+        }
+    }
+
+    /*********************************Private Internal Functions*********************************/
 
     private void closeConnection(Connection conn) {
         try {
@@ -279,6 +256,46 @@ public class DatabaseHelper {
         }
     }
 
+    private boolean checkUsername(String username, Connection conn) {
+        String query = "SELECT * FROM users WHERE username=?";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.isBeforeFirst()) {
+                System.out.println("User already exists!");
+                return false;
+            }
+        } catch (SQLException e) {
+            logger.error("An error occurred:", e);
+        }
+        return true;
+    }
+
+    private static String getName(int userId) {
+        String name = "";
+        Connection conn = null;
+        String query = "SELECT name FROM users WHERE id=?";
+        try {
+            conn = getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                name = resultSet.getString("name");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error getting name: " + e.getMessage());
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    System.out.println("Error closing connection: " + e.getMessage());
+                }
+            }
+        }
+        return name;
+    }
 
     private static String hashPassword(String password) {
         try {
