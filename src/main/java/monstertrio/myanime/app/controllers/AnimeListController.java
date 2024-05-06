@@ -78,7 +78,6 @@ public class AnimeListController implements Initializable {
                 Image image = new Image(imageUrl);
                 imageView.setImage(image);
             } catch (Exception e) {
-                // Handle exceptions (e.g., display a placeholder image)
                 System.out.println("Error loading image: " + e.getMessage());
             }
         }).start();
@@ -86,22 +85,19 @@ public class AnimeListController implements Initializable {
 
     private void openEditPage(Anime anime) {
         try {
-            // Load the FXML file for the edit popup page
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/AnimeEdit.fxml"));
             HBox editPopup = loader.load();
 
-            // Create a new stage for the edit popup page
             Stage popupStage = new Stage();
             popupStage.initModality(Modality.APPLICATION_MODAL);
-            popupStage.setTitle("Edit Anime");
+            popupStage.setTitle("AniTracker - Edit Anime");
 
-            // Set up the controller and pass the selected anime entry
             EditAnimeController controller = loader.getController();
             controller.setAnime(anime);
             controller.setStage(popupStage);
-            controller.initialize();
+            controller.setAnimeListController(this);
 
-            // Set the scene and show the popup stage
             Scene scene = new Scene(editPopup);
             popupStage.setScene(scene);
             popupStage.setTitle("AniTracker - Edit Anime");
@@ -111,7 +107,7 @@ public class AnimeListController implements Initializable {
         }
     }
 
-    private void initializeUI() {
+    public void initializeUI() {
         DatabaseHelper helper = new DatabaseHelper();
         column_index.setCellFactory(col -> new TableCell<>() {
             @Override
@@ -192,7 +188,9 @@ public class AnimeListController implements Initializable {
 
         button_edit_anime.setOnAction(e -> {
             Anime anime = animeTableView.getSelectionModel().getSelectedItem();
-            openEditPage(anime);
+            if (anime != null) {
+                openEditPage(anime);
+            }
         });
     }
 

@@ -40,7 +40,11 @@ public class EditAnimeController {
 
     private Anime anime;
     private Stage stage;
+    private AnimeListController animeListController;
 
+    public void setAnimeListController(AnimeListController animeListController) {
+        this.animeListController = animeListController;
+    }
     public void setAnime(Anime anime) {
         this.anime=anime;
     }
@@ -70,6 +74,9 @@ public class EditAnimeController {
             anime.setGenre(tf_new_genre.getText());
             anime.setImageUrl(tf_new_image_url.getText());
             helper.updateAnime(anime);
+            }
+            if (animeListController != null) {
+                animeListController.initializeUI();
             }
             stage.close();
         });
